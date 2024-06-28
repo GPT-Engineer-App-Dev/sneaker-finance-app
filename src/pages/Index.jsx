@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { DatePickerDemo } from "@/components/ui/date-picker";
+
 import { toast } from "sonner";
 
 const Index = () => {
@@ -38,7 +38,11 @@ const Index = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <DatePickerDemo />
+            <Input
+              type="date"
+              value={newTransaction.date.toISOString().split('T')[0]}
+              onChange={(e) => setNewTransaction({ ...newTransaction, date: new Date(e.target.value) })}
+            />
             <Input
               type="number"
               placeholder="Amount"
